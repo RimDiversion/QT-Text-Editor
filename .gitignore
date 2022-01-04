@@ -1,4 +1,5 @@
-*.txt
 *.pyc
 *.env
 auth
+**/venv/*
+**/files/*
