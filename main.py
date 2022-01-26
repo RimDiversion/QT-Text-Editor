@@ -23,6 +23,7 @@ class Main(QtWidgets.QMainWindow):
         self.directory = os.path.join(os.getcwd(), "files") # default directory
         self.quick_save_active = False
 
+        # This allows you to be able to open files with the text editor
         if len(sys.argv) == 2:
             filename = sys.argv[1]
             if filename:
@@ -108,7 +109,7 @@ class Main(QtWidgets.QMainWindow):
         self.main_ui.textEdit.setCurrentFont(font)
 
     def send_email(self):
-        gmail.send_email('machine.rim@gmail.com', self.windowTitle(), self.main_ui.textEdit.toPlainText())
+        gmail.send_email(self.windowTitle(), self.main_ui.textEdit.toPlainText())
 
     def icon_align(self):
         alignment = self.main_ui.alignment_combo_box.currentText()
@@ -164,9 +165,6 @@ class Main(QtWidgets.QMainWindow):
                 os.remove(os.path.join(os.getcwd(), 
                 "recovery", 
                 (os.listdir(os.path.dirname(filename))[0])))
-
-    def refocus(self):
-        self.main_ui.textEdit.setFocus()
 
     def save(self):
         if not self.quick_save_active:
