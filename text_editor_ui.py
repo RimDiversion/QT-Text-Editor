@@ -7,7 +7,7 @@ HEIGHT = 2000
 class MainWindow():
     def setupUi(self, MainWindow):
         MainWindow.resize(WIDTH, HEIGHT)
-        MainWindow.setWindowTitle("MacroHardWord")
+        MainWindow.setWindowTitle("QT Text Editor")
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
 
         self.centralwidget = QtWidgets.QWidget(MainWindow)      
@@ -82,17 +82,15 @@ class MainWindow():
         dialog_font.setBold(True)
 
         self.central_layout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.menubar_layout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.menubar_layout.setContentsMargins(0, 0, 0, 0)
+        self.menubar_layout = QtWidgets.QHBoxLayout()
+        self.menubar_layout.setAlignment(QtCore.Qt.AlignLeft)
         
-
         self.submenubar = QtWidgets.QFrame(self.centralwidget)
         self.submenubar.setPalette(self.palette)
         self.submenubar.setFrameStyle(0)
         self.submenubar.setLineWidth(0)
         self.submenubar.setStyleSheet("background-color: rgb(0, 30, 30);")
         self.central_layout.addWidget(self.submenubar)
-        
         
         self.textEdit = QtWidgets.QTextBrowser(self.centralwidget)
         self.textEdit.setReadOnly(False)
@@ -102,7 +100,6 @@ class MainWindow():
         self.central_layout.addWidget(self.textEdit)
 
         self.centralwidget.setLayout(self.central_layout)
-        
 
         self.font_size_label = QtWidgets.QLabel(self.centralwidget)
         self.font_size_label.setPalette(self.palette)
@@ -110,6 +107,7 @@ class MainWindow():
         self.font_size_label.setText("Font Size:")
         self.font_size_label.adjustSize()
         self.font_size_label.setMaximumSize(self.font_size_label.size())
+        self.font_size_label.setMinimumSize(10, 25)
         self.menubar_layout.addWidget(self.font_size_label)
 
         self.font_size_box = QtWidgets.QSpinBox(self.centralwidget)
@@ -118,7 +116,7 @@ class MainWindow():
         self.font_size_box.setProperty("value", self.font.pointSize())
         self.font_size_box.setMinimum(1)
         self.font_size_box.setSingleStep(2)
-        self.font_size_box.setMaximumSize(self.font_size_box.size())
+        self.font_size_box.setMaximumSize(60,30)
         self.menubar_layout.addWidget(self.font_size_box)
 
         self.font_combo_box = QtWidgets.QComboBox(self.centralwidget)
@@ -129,6 +127,7 @@ class MainWindow():
         self.font_combo_box.setStyleSheet("background-color: rgb(70, 150, 150)")
         self.font_combo_box.setCurrentText("Courier New")
         self.font_combo_box.setMaximumSize(self.font_combo_box.size())
+        self.font_combo_box.setMinimumSize(100, 25)
         self.menubar_layout.addWidget(self.font_combo_box)
 
         self.alignment_combo_box = QtWidgets.QComboBox(self.centralwidget)
@@ -140,6 +139,7 @@ class MainWindow():
         self.alignment_combo_box.adjustSize()
         self.alignment_combo_box.setPalette(self.palette)
         self.alignment_combo_box.setMaximumSize(self.alignment_combo_box.size())
+        self.alignment_combo_box.setMinimumSize(75, 25)
         self.menubar_layout.addWidget(self.alignment_combo_box)
 
         self.bold_button = QtWidgets.QPushButton(self.centralwidget)
@@ -147,6 +147,7 @@ class MainWindow():
         self.bold_button.setStyleSheet("background-color: rgb(70, 150, 150)")
         self.bold_button.setCheckable(True)
         self.bold_button.setMaximumSize(self.bold_button.size())
+        self.bold_button.setMinimumSize(25, 25)
         self.menubar_layout.addWidget(self.bold_button)
 
         self.italic_button = QtWidgets.QPushButton(self.centralwidget)
@@ -154,6 +155,7 @@ class MainWindow():
         self.italic_button.setStyleSheet("background-color: rgb(70, 150, 150)")
         self.italic_button.setCheckable(True)
         self.italic_button.setMaximumSize(self.italic_button.size())
+        self.italic_button.setMinimumSize(25, 25)
         self.menubar_layout.addWidget(self.italic_button)
 
         self.underline_button = QtWidgets.QPushButton(self.centralwidget)
@@ -161,9 +163,8 @@ class MainWindow():
         self.underline_button.setStyleSheet("background-color: rgb(70, 150, 150)")
         self.underline_button.setCheckable(True)
         self.underline_button.setMaximumSize(self.underline_button.size())
+        self.underline_button.setMinimumSize(25, 25)
         self.menubar_layout.addWidget(self.underline_button)
-
-        #self.menubar_layout.addSpacerItem(QtWidgets.QSpacerItem(1700,40))
 
         self.submenubar.setLayout(self.menubar_layout)
 

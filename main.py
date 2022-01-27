@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Basic text editor with a few basic styling options because I
+didn't own Word and didn't want to use notepad or Google Docs
+"""
 
 import sys
 import os
@@ -23,7 +27,7 @@ class Main(QtWidgets.QMainWindow):
         self.directory = os.path.join(os.getcwd(), "files") # default directory
         self.quick_save_active = False
 
-        # This allows you to be able to open files with the text editor
+        # This allows you to be able to open files with the text editor via right click and 'open with'
         if len(sys.argv) == 2:
             filename = sys.argv[1]
             if filename:
